@@ -1,18 +1,18 @@
 ---
 title: "Exact datetime Schedules"
 sub_link: "schedules/datetime"
-code_link: "https://github.com/polyaxon/cli/blob/master/cli/polyaxon/_flow/schedule/datetime.py"
+code_link: "https://github.com/cernide/cli/blob/master/cli/polyaxon/_flow/schedule/datetime.py"
 meta_title: "Exact datetime Schedules - Polyaxon Automation"
 meta_description: "Exact datetime schedules to trigger components at a specific time."
 visibility: public
 status: published
 tags:
-  - reference
-  - polyaxon
-  - polyflow
-  - pipelines
-  - dags
-  - schedules
+    - reference
+    - polyaxon
+    - polyflow
+    - pipelines
+    - dags
+    - schedules
 sidebar: "automation"
 ---
 

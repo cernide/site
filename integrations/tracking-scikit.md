@@ -5,13 +5,13 @@ meta_description: "Polyaxon allows to schedule Scikit-learn experiments, and sup
 custom_excerpt: "The Scikit-learn is a free software machine learning library for the Python programming language. It features various classification, regression and clustering algorithms including support vector machines, ..."
 image: "../../content/images/integrations/scikit.png"
 author:
-  name: "Polyaxon"
-  slug: "Polyaxon"
-  website: "https://polyaxon.com"
-  twitter: "polyaxonAI"
-  github: "polyaxon"
+    name: "Polyaxon"
+    slug: "Polyaxon"
+    website: "https://polyaxon.com"
+    twitter: "polyaxonAI"
+    github: "polyaxon"
 tags:
-  - tracking
+    - tracking
 featured: false
 popularity: 1
 visibility: public
@@ -22,14 +22,14 @@ Polyaxon allows to schedule Scikit-learn experiments, and supports tracking metr
 
 With Polyaxon you can:
 
- * log hyperparameters for every run
- * see learning curves for metrics during training
- * see hardware consumption and stdout/stderr output during training
- * log images, charts, and other assets
- * log git commit information
- * log env information
- * log model
- * ...
+-   log hyperparameters for every run
+-   see learning curves for metrics during training
+-   see hardware consumption and stdout/stderr output during training
+-   log images, charts, and other assets
+-   log git commit information
+-   log env information
+-   log model
+-   ...
 
 ## Tracking API
 
@@ -85,8 +85,8 @@ tracking.log_metrics(metric1=value1, metric2=value2, ...)
 In this example we will go through the process of logging a classifier information and logging a pickled model.
 
 This example can be used with the offline mode `POLYAXON_OFFLINE=true` and it does not require a Polyaxon API to run locally.
- 
-To see how this can be turned to a declarative approach to be submitted to a Polyaxon cluster, please check this [example](https://github.com/polyaxon/polyaxon-examples/tree/master/in_cluster/sklearn/digits)
+
+To see how this can be turned to a declarative approach to be submitted to a Polyaxon cluster, please check this [example](https://github.com/cernide/cernide-examples/tree/master/in_cluster/sklearn/digits)
 
 ```python
 import pickle
@@ -139,8 +139,8 @@ tracking.end()
 In this example we will go through the process of logging a regressor information and logging a joblib model.
 
 This example can be used with the offline mode `POLYAXON_OFFLINE=true` and it does not require a Polyaxon API to run locally.
- 
-To see how this can be turned to a declarative approach to be submitted to a Polyaxon cluster, please check this [example](https://github.com/polyaxon/polyaxon-examples/tree/master/in_cluster/sklearn/boston)
+
+To see how this can be turned to a declarative approach to be submitted to a Polyaxon cluster, please check this [example](https://github.com/cernide/cernide-examples/tree/master/in_cluster/sklearn/boston)
 
 ```python
 import os

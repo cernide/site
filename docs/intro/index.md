@@ -7,18 +7,18 @@ is_index: true
 visibility: public
 status: published
 tags:
-  - concepts
-  - training
-  - scale
-  - scheduling
-  - platform
-  - kubernetes
-  - helm
-  - containers
-  - micro-services
-  - deep-learning
-  - machine-learning
-  - enterprise
+    - concepts
+    - training
+    - scale
+    - scheduling
+    - platform
+    - kubernetes
+    - helm
+    - containers
+    - micro-services
+    - deep-learning
+    - machine-learning
+    - enterprise
 sidebar: "intro"
 ---
 
@@ -38,7 +38,7 @@ and information for training, tracking, monitoring, and managing your data scien
 We do our best to make this documentation clear and user friendly,
 if you see anything that is incorrect or have any questions,
 feel free to reach out at the
-[issues page](https://github.com/polyaxon/polyaxon/issues),
+[issues page](https://github.com/cernide/cernide/issues),
 [forum](/slack/)
 or [contact us](mailto:contact@polyaxon.com).
 
@@ -65,22 +65,22 @@ go from reproducible and portable experiments to scalable model deployments.
 
 The first question most people have is, of course, how is Polyaxon different from everything else out there? Here's a quick summary:
 
- * Allows you to own your data ✅
- * Customizable and extensible ✅
- * Works with any framework or library ✅
- * Integrates with other tools in the community ✅
- * Built-in automation engine ✅
- * Built-in optimization engine ✅
- * Advanced dashboard for insights, collaboration, tracking, comparing, and monitoring  ✅
- * Comprehensive SDK ✅
- * Command Line Interface ✅
- * Native REST API ✅
- * Uses modern technology and is continuously improving ✅
- * Core engine is open-source ✅
- * Fast ✅
- * Reliably secure ✅
- * Made with passion and is here for long ✅
- * Has a sustainable business model with [EE & Cloud versions](/pricing/) ✅
+-   Allows you to own your data ✅
+-   Customizable and extensible ✅
+-   Works with any framework or library ✅
+-   Integrates with other tools in the community ✅
+-   Built-in automation engine ✅
+-   Built-in optimization engine ✅
+-   Advanced dashboard for insights, collaboration, tracking, comparing, and monitoring ✅
+-   Comprehensive SDK ✅
+-   Command Line Interface ✅
+-   Native REST API ✅
+-   Uses modern technology and is continuously improving ✅
+-   Core engine is open-source ✅
+-   Fast ✅
+-   Reliably secure ✅
+-   Made with passion and is here for long ✅
+-   Has a sustainable business model with [EE & Cloud versions](/pricing/) ✅
 
 ## Ecosystem
 
@@ -103,10 +103,10 @@ The [Polyaxon community channel](/slack/) is where to find other Polyaxon users.
 To keep in touch with people directly and give them updates about what's new with Polyaxon.
 Here are the easiest ways to keep track of Polyaxon:
 
-- [Github](https://github.com/polyaxon/polyaxon)
-- [Twitter](https://twitter.com/polyaxonAI)
+-   [Github](https://github.com/cernide/cernide)
+-   [Twitter](https://twitter.com/polyaxonAI)
 
-### Guides &  Tutorials
+### Guides & Tutorials
 
 We publish some [guides and tutorials](https://polyaxon.com/blog) from time to time to explain or clarify how to use our tools in practical ways.
 These guides have tags, you can for instance show all guides for a particular tag to gain deeper knowledge about that area.
@@ -114,7 +114,6 @@ These guides have tags, you can for instance show all guides for a particular ta
 ### Frequently asked questions
 
 **Don't forget!** If you have any questions or problems the best places to start is the search box on this page, which will immediately return all results from across our documentation and [FAQ](/faq/) archive.
-
 
 If you have a subscription to one of our enterprise editions (`Cloud` or `EE`),
 just drop us an email on `support@polyaxon.com` and we'll be more than happy to help.

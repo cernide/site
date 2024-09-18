@@ -5,13 +5,13 @@ meta_description: "Polyaxon allows to schedule XGBoost experiments, and supports
 custom_excerpt: "XGBoost is an open-source software library which provides a gradient boosting framework for C++, Java, Python, R, Julia, Perl, and Scala. It works on Linux, Windows, and macOS. From the project description, it aims to provide a 'Scalable, Portable and Distributed Gradient Boosting Library'."
 image: "../../content/images/integrations/xgboost.png"
 author:
-  name: "Polyaxon"
-  slug: "Polyaxon"
-  website: "https://polyaxon.com"
-  twitter: "polyaxonAI"
-  github: "polyaxon"
+    name: "Polyaxon"
+    slug: "Polyaxon"
+    website: "https://polyaxon.com"
+    twitter: "polyaxonAI"
+    github: "polyaxon"
 tags:
-  - tracking
+    - tracking
 featured: false
 popularity: 2
 visibility: public
@@ -22,14 +22,14 @@ Polyaxon allows to schedule XGBoost experiments and supports tracking metrics, o
 
 With Polyaxon you can:
 
- * log hyperparameters for every run
- * see learning curves for losses and metrics during training
- * see hardware consumption and stdout/stderr output during training
- * log images, charts, and other assets
- * log git commit information
- * log env information
- * log model
- * ...
+-   log hyperparameters for every run
+-   see learning curves for losses and metrics during training
+-   see hardware consumption and stdout/stderr output during training
+-   log images, charts, and other assets
+-   log git commit information
+-   log env information
+-   log model
+-   ...
 
 ## Tracking API
 
@@ -59,7 +59,7 @@ tracking.init(...)
 
 Polyaxon provides two XGBoost callback flavors an old `polyaxon_callback` function and a new `PolyaxonCallback` class, you can use one of these callbacks with your experiment to report metrics automatically and other charts automatically:
 
- * Function callback
+-   Function callback
 
 ```python
 from polyaxon import tracking
@@ -71,7 +71,7 @@ tracking.init()
 model.train(params, data, callbacks=[polyaxon_callback(...)])
 ```
 
- * Class callback
+-   Class callback
 
 > **Note**: this callback is available from `>1.17.0`
 
@@ -89,7 +89,7 @@ model.train(params, data, callbacks=[PolyaxonCallback(...)])
 
 Creating the callback will use the current initialized run, but you can use a different run if you need to have more control:
 
- * Function callback
+-   Function callback
 
 ```python
 from polyaxon.tracking import Run
@@ -100,8 +100,7 @@ run = Run(...)
 model.train(params, data, callbacks=[polyaxon_callback(run=run, log_importance=True, log_model=True, max_num_features=44)])
 ```
 
-
- * Class callback
+-   Class callback
 
 ```python
 from polyaxon.tracking import Run
@@ -116,7 +115,7 @@ model.train(params, data, callbacks=[polyaxon_callback(run=run, log_importance=T
 
 If you want to have more control and use Polyaxon to log metrics in your custom XGBoost scripts:
 
- * log metrics
+-   log metrics
 
 ```python
 tracking.log_mtrics(metric1=value1, metric2=value2, ...)
@@ -126,10 +125,9 @@ tracking.log_mtrics(metric1=value1, metric2=value2, ...)
 
 In this example we will go through the process of logging an XGBoost model using Polyaxon's callback.
 
-This example can be used with the offline mode `POLYAXON_OFFLINE=true` and it does not require a Polyaxon API to run locally. 
+This example can be used with the offline mode `POLYAXON_OFFLINE=true` and it does not require a Polyaxon API to run locally.
 
-To see how this can be turned to a declarative approach to be submitted to a Polyaxon cluster, please check this [example](https://github.com/polyaxon/polyaxon-examples/tree/master/in_cluster/sklearn/boston)
-
+To see how this can be turned to a declarative approach to be submitted to a Polyaxon cluster, please check this [example](https://github.com/cernide/cernide-examples/tree/master/in_cluster/sklearn/boston)
 
 ```python
 import argparse
@@ -222,9 +220,9 @@ if __name__ == '__main__':
 
     dtrain = xgb.DMatrix(X_train, label=y_train)
     dtest = xgb.DMatrix(X_test, label=y_test)
-    
+
     callback = polyaxon_callback()
-    # Or 
+    # Or
     # callback = PolyaxonCallback()
 
     if args.cross_validate:

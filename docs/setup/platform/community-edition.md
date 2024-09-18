@@ -4,15 +4,15 @@ sub_link: "platform/community-edition"
 meta_title: "Polyaxon Community Edition Setup - Configuration"
 meta_description: "Polyaxon Community Edition Setup based on Polyaxon open-source."
 tags:
-  - configuration
-  - polyaxon
-  - kubernetes
+    - configuration
+    - polyaxon
+    - kubernetes
 sidebar: "setup"
 ---
 
 ## Overview
 
-Polyaxon Community Edition is based on Polyaxon's [open-source project](https://github.com/polyaxon/polyaxon),
+Polyaxon Community Edition is based on Polyaxon's [open-source project](https://github.com/cernide/cernide),
 and it deploys on a single cluster and a single namespace, there's no limitation on the number of nodes you can use.
 The deployment comes with an in-cluster agent deployment for managing workload.
 
@@ -36,7 +36,7 @@ Polyaxon Community Edition manages the operator and the gateway in a single depl
 
 ```yaml
 operator:
-  enabled: true
+    enabled: true
 ```
 
 ## Enable extra services
@@ -49,9 +49,9 @@ you can enable the open-source scheduler to process events and submission in an 
 
 ```yaml
 redis:
-  enabled: true
+    enabled: true
 scheduler:
-  enabled: true
+    enabled: true
 ```
 
 > **Note**: You can have more control about the broker, please check this [guide](/docs/setup/platform/broker/).
@@ -75,7 +75,7 @@ you can disable the UI:
 
 ```yaml
 ui:
-  enabled: false
+    enabled: false
 ```
 
 ## Security

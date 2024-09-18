@@ -6,9 +6,9 @@ meta_description: "Components - Become familiar with the ecosystem of Polyaxon t
 visibility: public
 status: published
 tags:
-  - tutorials
-  - concepts
-  - quick-start
+    - tutorials
+    - concepts
+    - quick-start
 sidebar: "intro"
 ---
 
@@ -28,20 +28,19 @@ polyaxon run --url=https://raw.githubusercontent.com/polyaxon/polyaxon-quick-sta
 
 The run command consumes configuration files, also called Polyaxonfile, from different sources:
 
- * From local files using the `-f` flag:
-    * `polyaxon run -f path/to/polyaxonfile.yaml`
-    * `polyaxon run -f path/to/polyaxonfile.yaml -f path/to/polyaxonfile_override.yaml`
- * From local Python files using `--python-module` or `-pm` flag:
-    * `polyaxon run -pm path/to/pythonfile.py` in this case Polyaxon will look for a variable `main` which will contain your component.
-    * `polyaxon run -pm path/to/pythonfile.py:component-name` if you have multiple components in your Python file you can specify which one to run.
- * From urls using the `--url` flag:
-    * `polyaxon run --url=https://public-site.com/polyaxonfile.yaml` this is the command that we used to avoid cloning the project locally.
- * From a registry `--hub` flag:
-    * `polyaxon run --hub=tensorboard:single-run` this is the command that we used to run the Tensorboard.
-      Oftentimes, components can be reusable and generic, some of these components are distributed in a public registry.
-      Polyaxon also provides a managed registry integrated with our auth, access management, and team management abstraction.
-      Please check the [Component Hub docs](/docs/management/component-hub/).
-
+-   From local files using the `-f` flag:
+    -   `polyaxon run -f path/to/polyaxonfile.yaml`
+    -   `polyaxon run -f path/to/polyaxonfile.yaml -f path/to/polyaxonfile_override.yaml`
+-   From local Python files using `--python-module` or `-pm` flag:
+    -   `polyaxon run -pm path/to/pythonfile.py` in this case Polyaxon will look for a variable `main` which will contain your component.
+    -   `polyaxon run -pm path/to/pythonfile.py:component-name` if you have multiple components in your Python file you can specify which one to run.
+-   From urls using the `--url` flag:
+    -   `polyaxon run --url=https://public-site.com/polyaxonfile.yaml` this is the command that we used to avoid cloning the project locally.
+-   From a registry `--hub` flag:
+    -   `polyaxon run --hub=tensorboard:single-run` this is the command that we used to run the Tensorboard.
+        Oftentimes, components can be reusable and generic, some of these components are distributed in a public registry.
+        Polyaxon also provides a managed registry integrated with our auth, access management, and team management abstraction.
+        Please check the [Component Hub docs](/docs/management/component-hub/).
 
 ## Understanding the Polyaxonfile
 
@@ -57,12 +56,16 @@ name: simple-experiment
 description: Minimum information to run this TF.Keras example
 tags: [examples]
 run:
-  kind: job
-  init:
-  - git: {url: "https://github.com/polyaxon/polyaxon-quick-start"}
-  container:
-    image: polyaxon/polyaxon-quick-start
-    command: [python3, "{{ globals.artifacts_path }} + /polyaxon-quick-start/model.py"]
+    kind: job
+    init:
+        - git: { url: "https://github.com/cernide/cernide-quick-start" }
+    container:
+        image: polyaxon/polyaxon-quick-start
+        command:
+            [
+                python3,
+                "{{ globals.artifacts_path }} + /polyaxon-quick-start/model.py",
+            ]
 ```
 
 This is a simple Polyaxonfile, the file can be made simpler by removing the optional fields `name`, `description`, and `tags`,
@@ -72,14 +75,13 @@ and if the docker image had an entry point, the file would have looked like this
 version: 1.1
 kind: component
 run:
-  kind: job
-  container:
-    image: polyaxon/polyaxon-quick-start
+    kind: job
+    container:
+        image: polyaxon/polyaxon-quick-start
 ```
 
 Every Polyaxonfile must have a kind [component](/docs/core/specification/component/) or [operation](/docs/core/specification/operation/).
 In this section, we will explore the component kind, and in the next part of the tutorial we will dive into the operation kind.
-
 
 This simple file runs a container with a custom image `polyaxon/polyaxon-quick-start`, the image is based on Tensorflow, and a command that executes our custom code.
 The component also clones the quick start repo, this allows us to change the repo without having to rebuild the docker image,
@@ -98,12 +100,13 @@ Polyaxon schedules your logic in containers. The container section exposes all i
 
 The container section provides several options, the most important ones are:
 
-- **command and args**:
+-   **command and args**:
 
 Generally when you use the git initializer you will need to provide the path to the git repo in the container:
 
 ```yaml
-command: [python3, "{{ globals.artifacts_path }} + /polyaxon-quick-start/model.py"]
+command:
+    [python3, "{{ globals.artifacts_path }} + /polyaxon-quick-start/model.py"]
 ```
 
 Or you can use the `workingDir`:
@@ -116,36 +119,36 @@ command: [python3, "model.py"]
 You can use `bash` or `sh` to combine multiple commands:
 
 ```yaml
-command: ["/bin/sh","-c"]
+command: ["/bin/sh", "-c"]
 args: ["command one; command two && command three"]
 ```
 
-- **Resources**:
+-   **Resources**:
 
 This is how you assign GPUs:
 
 ```yaml
 resources:
-  limits:
-    nvidia.com/gpu: 1
+    limits:
+        nvidia.com/gpu: 1
 ```
 
 Or limit the container's memory and CPU:
 
 ```yaml
 resources:
-  limits:
-    cpu: 500m
-    memory: 2000Mi
-  requests:
-    cpu: 100m
-    memory: 50Mi
+    limits:
+        cpu: 500m
+        memory: 2000Mi
+    requests:
+        cpu: 100m
+        memory: 50Mi
 ```
 
 ## Training a model
 
 Let's look now at how Polyaxon logged information and results during the experiment.
-If you open the file [model.py](https://github.com/polyaxon/polyaxon-quick-start/blob/master/model.py)
+If you open the file [model.py](https://github.com/cernide/cernide-quick-start/blob/master/model.py)
 
 ```python
 ...
@@ -187,8 +190,8 @@ model.fit(x=X_train,
 
 In this Python file you can see that we are importing some information from `polyaxon library`.
 
- * We are importing a tracking module
- * We are loading a Keras callback
+-   We are importing a tracking module
+-   We are loading a Keras callback
 
 You can also see that this is a simple TF.Keras model and we have a small section where we use the `tracking` module to track information about the run.
 In this case `KerasCallback` and one line for getting a path for logging Tensorboard's outputs. Polyaxon will take care of archiving the assets, outputs,
@@ -226,38 +229,39 @@ description: experiment with inputs
 tags: [examples]
 
 inputs:
-- {name: conv1_size, type: int, value: 32, isOptional: true}
-- {name: conv2_size, type: int, value: 64, isOptional: true}
-- {name: dropout, type: float, value: 0.2, isOptional: true}
-- {name: hidden1_size, type: int, value: 500, isOptional: true}
-- {name: conv_activation, type: str, value: relu, isOptional: true}
-- {name: dense_activation, type: str, value: relu, isOptional: true}
-- {name: optimizer, type: str, value: adam, isOptional: true}
-- {name: learning_rate, type: float, value: 0.001, isOptional: true}
-- {name: epochs, type: int}
+    - { name: conv1_size, type: int, value: 32, isOptional: true }
+    - { name: conv2_size, type: int, value: 64, isOptional: true }
+    - { name: dropout, type: float, value: 0.2, isOptional: true }
+    - { name: hidden1_size, type: int, value: 500, isOptional: true }
+    - { name: conv_activation, type: str, value: relu, isOptional: true }
+    - { name: dense_activation, type: str, value: relu, isOptional: true }
+    - { name: optimizer, type: str, value: adam, isOptional: true }
+    - { name: learning_rate, type: float, value: 0.001, isOptional: true }
+    - { name: epochs, type: int }
 outputs:
-- {name: loss, type: float}
-- {name: accuracy, type: float}
+    - { name: loss, type: float }
+    - { name: accuracy, type: float }
 
 run:
-  kind: job
-  init:
-  - git: {url: "https://github.com/polyaxon/polyaxon-quick-start"}
-  container:
-    image: polyaxon/polyaxon-quick-start
-    workingDir: "{{ globals.artifacts_path }}/polyaxon-quick-start"
-    command: [python3, model.py]
-    args: [
-      "--conv1_size={{ conv1_size }}",
-      "--conv2_size={{ conv2_size }}",
-      "--dropout={{ dropout }}",
-      "--hidden1_size={{ hidden1_size }}",
-      "--optimizer={{ optimizer }}",
-      "--conv_activation={{ conv_activation }}",
-      "--dense_activation={{ dense_activation }}",
-      "--learning_rate={{ learning_rate }}",
-      "--epochs={{ epochs }}"
-    ]
+    kind: job
+    init:
+        - git: { url: "https://github.com/cernide/cernide-quick-start" }
+    container:
+        image: polyaxon/polyaxon-quick-start
+        workingDir: "{{ globals.artifacts_path }}/polyaxon-quick-start"
+        command: [python3, model.py]
+        args:
+            [
+                "--conv1_size={{ conv1_size }}",
+                "--conv2_size={{ conv2_size }}",
+                "--dropout={{ dropout }}",
+                "--hidden1_size={{ hidden1_size }}",
+                "--optimizer={{ optimizer }}",
+                "--conv_activation={{ conv_activation }}",
+                "--dense_activation={{ dense_activation }}",
+                "--learning_rate={{ learning_rate }}",
+                "--epochs={{ epochs }}",
+            ]
 ```
 
 The difference between this file and the previous one is that we introduced some inputs/outputs and added arguments to the container.
@@ -320,7 +324,6 @@ We can start another run based on the same component, but this time we will pass
 ```bash
 polyaxon run --url=https://raw.githubusercontent.com/polyaxon/polyaxon-quick-start/master/experimentation/typed.yaml -P lr=0.005 -P epochs=8
 ```
-
 
 ## Let's compare the experiments on the dashboard
 

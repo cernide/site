@@ -6,10 +6,10 @@ meta_description: "Deploying ML apps - Become familiar with the ecosystem of Pol
 visibility: public
 status: published
 tags:
-  - tutorials
-  - concepts
-  - notebook
-  - quick-start
+    - tutorials
+    - concepts
+    - notebook
+    - quick-start
 sidebar: "intro"
 ---
 
@@ -19,7 +19,7 @@ In the previous guide we trained several models. In this section we will learn h
 This is an example of creating a parametrized app that you can host using Polyaxon.
 The same principles in this guides can be used to deploy similar apps using other projects like Dash, Voila, custom front-end service, ...
 
-All code and manifests used in this tutorial can be found in this [github repo](https://github.com/polyaxon/polyaxon-ml-serving).
+All code and manifests used in this tutorial can be found in this [github repo](https://github.com/cernide/cernide-ml-serving).
 
 > **Note**: On Polyaxon EE or Polyaxon Cloud, the app will be protected and can only be accessed by users who have access to your organization following the permissions defined for each member.
 
@@ -38,7 +38,6 @@ tracking.log_model(model_path, name="iris-model", framework="scikit-learn", vers
 
 We will deploy a simple streamlit service that will load the best model based on accuracy as an Iris classification App.
 The app will make predictions based on the features and will display an image corresponding to the flower class.
-
 
 ```python
 import streamlit as st
@@ -107,24 +106,33 @@ name: iris-classification
 tags: ["streamlit", "app"]
 
 inputs:
-- name: uuid
-  type: str
+    - name: uuid
+      type: str
 
 run:
-  kind: service
-  ports: [8501]
-  rewritePath: true
-  init:
-  - git: {"url": "https://github.com/polyaxon/polyaxon-ml-serving"}
-  - artifacts: {"files": [["{{ uuid }}/outputs/model/model.joblib", "{{ globals.artifacts_path }}/polyaxon-ml-serving/streamlit-app/model.joblib"]]}
-  container:
-    image: polyaxon/polyaxon-examples:ml-serving
-    workingDir: "{{ globals.artifacts_path }}/polyaxon-ml-serving/streamlit-app"
-    command: [streamlit, run, app.py]
-    args: ["--", "--model-path=./model.joblib"]
+    kind: service
+    ports: [8501]
+    rewritePath: true
+    init:
+        - git: { "url": "https://github.com/cernide/cernide-ml-serving" }
+        - artifacts:
+              {
+                  "files":
+                      [
+                          [
+                              "{{ uuid }}/outputs/model/model.joblib",
+                              "{{ globals.artifacts_path }}/polyaxon-ml-serving/streamlit-app/model.joblib",
+                          ],
+                      ],
+              }
+    container:
+        image: polyaxon/polyaxon-examples:ml-serving
+        workingDir: "{{ globals.artifacts_path }}/polyaxon-ml-serving/streamlit-app"
+        command: [streamlit, run, app.py]
+        args: ["--", "--model-path=./model.joblib"]
 ```
 
-To schedule the app with Polyaxon: 
+To schedule the app with Polyaxon:
 
 ```bash
 polyaxon run -f streamlit-app/polyaxonfile.yaml -P uuid=f8176c9463a345908ce6865c9c7894a9

@@ -6,14 +6,14 @@ custom_excerpt: "{{custom_excerpt}}"
 code_link: "{{code_link}}"
 image: "../../content/images/integrations/{{image}}.png"
 author:
-  name: "Polyaxon"
-  slug: "Polyaxon"
-  website: "https://polyaxon.com"
-  twitter: "polyaxonAI"
-  github: "polyaxon"
-tags: {{tags}}
-featured: {{featured}}
-popularity: {{popularity}}
+    name: "Polyaxon"
+    slug: "Polyaxon"
+    website: "https://polyaxon.com"
+    twitter: "polyaxonAI"
+    github: "polyaxon"
+tags: { { tags } }
+featured: { { featured } }
+popularity: { { popularity } }
 class_name: component
 visibility: public
 status: published
@@ -23,7 +23,7 @@ status: published
 
 ## Component info on Polyaxon Hub
 
-To learn about this component definition or customize its behavior, please check [{{name}} on polyaxon-hub](https://github.com/polyaxon/polyaxon-hub/tree/master/{{name}}).
+To learn about this component definition or customize its behavior, please check [{{name}} on polyaxon-hub](https://github.com/cernide/cernide-hub/tree/master/{{name}}).
 
 ## Run this component using the CLI
 
@@ -35,13 +35,11 @@ polyaxon run --hub {{name}} -P ...
 
 To use a specific version:
 
-
 ```bash
 polyaxon run --hub {{name}}:[tag] -P ...
 ```
 
 > **Note**: `-P` is for passing parameters, e.g. `-P param1=value1 -P parame2=value2`
-
 
 ## View a running operation on the dashboard
 
@@ -58,6 +56,7 @@ polyaxon ops dashboard -p [project-name] -uid [run-uuid] -y
 ```
 
 {{service_command}}
+
 ## Stop a running operation
 
 To stop a running operation with this component:

@@ -5,13 +5,13 @@ meta_description: "Polyaxon allows to schedule Fastai experiments, and supports 
 custom_excerpt: "The fastai library simplifies training fast and accurate neural nets using modern best practices."
 image: "../../content/images/integrations/fastai.png"
 author:
-  name: "Polyaxon"
-  slug: "Polyaxon"
-  website: "https://polyaxon.com"
-  twitter: "polyaxonAI"
-  github: "polyaxon"
+    name: "Polyaxon"
+    slug: "Polyaxon"
+    website: "https://polyaxon.com"
+    twitter: "polyaxonAI"
+    github: "polyaxon"
 tags:
-  - tracking
+    - tracking
 featured: false
 popularity: 1
 visibility: public
@@ -22,14 +22,14 @@ Polyaxon allows to schedule Fastai experiments, and supports tracking metrics, o
 
 With Polyaxon you can:
 
- * log hyperparameters for every run
- * see learning curves for losses and metrics during training
- * see hardware consumption and stdout/stderr output during training
- * log images, charts, and other assets
- * log git commit information
- * log env information
- * log model
- * ...
+-   log hyperparameters for every run
+-   see learning curves for losses and metrics during training
+-   see hardware consumption and stdout/stderr output during training
+-   log images, charts, and other assets
+-   log git commit information
+-   log env information
+-   log model
+-   ...
 
 ## Tracking API
 
@@ -82,9 +82,9 @@ tracking.log_metrics(metric1=value1, metric2=value2, ...)
 
 In this example we will go through the process of logging a FastAI model using Polyaxon's callback.
 
-This example can be used with the offline mode `POLYAXON_OFFLINE=true` and it does not require a Polyaxon API to run locally. 
+This example can be used with the offline mode `POLYAXON_OFFLINE=true` and it does not require a Polyaxon API to run locally.
 
-To see how this can be turned to a declarative approach to be submitted to a Polyaxon cluster, please check this [example](https://github.com/polyaxon/polyaxon-examples/tree/master/in_cluster/fastai)
+To see how this can be turned to a declarative approach to be submitted to a Polyaxon cluster, please check this [example](https://github.com/cernide/cernide-examples/tree/master/in_cluster/fastai)
 
 ```python
 import argparse
@@ -118,7 +118,6 @@ if __name__ == '__main__':
 ## Fastai V1
 
 If you are using Fastai v1, you will need to import the callback for the v1 version
-
 
 ```python
 from polyaxon.tracking.contrib.fastai_v1 import PolyaxonCallback

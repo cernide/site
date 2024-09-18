@@ -6,24 +6,24 @@ meta_description: "Serving REST APIs with Flask - Become familiar with the ecosy
 visibility: public
 status: published
 tags:
-  - tutorials
-  - concepts
-  - notebook
-  - quick-start
+    - tutorials
+    - concepts
+    - notebook
+    - quick-start
 sidebar: "intro"
 ---
 
 ## Overview
 
 In the previous guide we trained several models. In this section we will learn how to deploy a serving REST API with Flask.
-This is an example of creating a REST API that you can host using Polyaxon, this type of APIs are intended for internal use or for testing purposes 
-before moving to a platform that specializes in serving or inference. 
+This is an example of creating a REST API that you can host using Polyaxon, this type of APIs are intended for internal use or for testing purposes
+before moving to a platform that specializes in serving or inference.
 
 The same principles in this guides can be used to deploy similar REST APIs using any other framework of your choice.
 
-All code and manifests used in this tutorial can be found in this [github repo](https://github.com/polyaxon/polyaxon-ml-serving).
+All code and manifests used in this tutorial can be found in this [github repo](https://github.com/cernide/cernide-ml-serving).
 
-> **Note**: On Polyaxon EE or Polyaxon Cloud, the REST APIs will be protected and can only be accessed by users who have access to your organization following the permissions defined for each member. 
+> **Note**: On Polyaxon EE or Polyaxon Cloud, the REST APIs will be protected and can only be accessed by users who have access to your organization following the permissions defined for each member.
 
 ## Logged model
 
@@ -40,7 +40,6 @@ tracking.log_model(model_path, name="iris-model", framework="scikit-learn", vers
 
 We will deploy a simple Flask service that will load the best model based on accuracy as an Iris classification RESt API.
 Our service will expose two API endpoints, one for returning predictions and one for returning probabilities.
-
 
 ```python
 from typing import Dict
@@ -123,25 +122,34 @@ name: flask-iris-classification
 tags: ["flask", "api"]
 
 inputs:
-- name: uuid
-  type: str
+    - name: uuid
+      type: str
 
 run:
-  kind: service
-  ports: [5000]
-  rewritePath: true
-  init:
-  - git: {"url": "https://github.com/polyaxon/polyaxon-ml-serving"}
-  - artifacts: {"files": [["{{ uuid }}/outputs/model/model.joblib", "{{ globals.artifacts_path }}/polyaxon-ml-serving/flask-serving/model.joblib"]]}
-  container:
-    image: polyaxon/polyaxon-examples:ml-serving
-    workingDir: "{{ globals.artifacts_path }}/polyaxon-ml-serving/flask-serving"
-    command: [python, app.py]
+    kind: service
+    ports: [5000]
+    rewritePath: true
+    init:
+        - git: { "url": "https://github.com/cernide/cernide-ml-serving" }
+        - artifacts:
+              {
+                  "files":
+                      [
+                          [
+                              "{{ uuid }}/outputs/model/model.joblib",
+                              "{{ globals.artifacts_path }}/polyaxon-ml-serving/flask-serving/model.joblib",
+                          ],
+                      ],
+              }
+    container:
+        image: polyaxon/polyaxon-examples:ml-serving
+        workingDir: "{{ globals.artifacts_path }}/polyaxon-ml-serving/flask-serving"
+        command: [python, app.py]
 ```
 
 ## Scheduling the service
 
-To schedule this REST API with Polyaxon: 
+To schedule this REST API with Polyaxon:
 
 ```bash
 polyaxon run -f flask-serving/polyaxonfile.yaml -P uuid=f8176c9463a345908ce6865c9c7894a9
@@ -153,7 +161,7 @@ You can now interact with the service using Python or curl. You can get the serv
 
 ```bash
 polyaxon ops service --external --url
-``` 
+```
 
 You can also retrieve the URL by going to the service tab and click fullscreen:
 
@@ -199,23 +207,32 @@ name: flask-iris-classification
 tags: ["flask", "api"]
 
 inputs:
-- name: uuid
-  type: str
+    - name: uuid
+      type: str
 
 run:
-  kind: service
-  ports: [8000]
-  rewritePath: true
-  init:
-  - git: {"url": "https://github.com/polyaxon/polyaxon-ml-serving"}
-  - artifacts: {"files": [["{{ uuid }}/outputs/model/model.joblib", "{{ globals.artifacts_path }}/polyaxon-ml-serving/flask-serving/model.joblib"]]}
-  container:
-    image: polyaxon/polyaxon-examples:ml-serving
-    workingDir: "{{ globals.artifacts_path }}/polyaxon-ml-serving/flask-serving"
-    args: ["gunicorn --preload -t 60 --bind 0.0.0.0:8000 app:server"]
+    kind: service
+    ports: [8000]
+    rewritePath: true
+    init:
+        - git: { "url": "https://github.com/cernide/cernide-ml-serving" }
+        - artifacts:
+              {
+                  "files":
+                      [
+                          [
+                              "{{ uuid }}/outputs/model/model.joblib",
+                              "{{ globals.artifacts_path }}/polyaxon-ml-serving/flask-serving/model.joblib",
+                          ],
+                      ],
+              }
+    container:
+        image: polyaxon/polyaxon-examples:ml-serving
+        workingDir: "{{ globals.artifacts_path }}/polyaxon-ml-serving/flask-serving"
+        args: ["gunicorn --preload -t 60 --bind 0.0.0.0:8000 app:server"]
 ```
 
-To schedule this REST API with Polyaxon: 
+To schedule this REST API with Polyaxon:
 
 ```bash
 polyaxon run -f flask-serving/polyaxonfile-gunicorn.yaml -P uuid=f8176c9463a345908ce6865c9c7894a9

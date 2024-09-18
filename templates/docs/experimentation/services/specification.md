@@ -1,21 +1,21 @@
 ---
 title: "Service Specification"
 sub_link: "services/specification"
-code_link: "https://github.com/polyaxon/cli/blob/master/cli/polyaxon/_flow/run/service.py"
+code_link: "https://github.com/cernide/cli/blob/master/cli/polyaxon/_flow/run/service.py"
 meta_title: "Service Specification - Experimentation"
 meta_description: "Services are used to expose dashboards and APIs, run notebooks, JupyterHub, Tensorboards, Streamlit, Voila, ..."
 visibility: public
 status: published
 tags:
-  - specification
-  - api
-  - polyaxon
-  - yaml
-  - json
-  - python
-  - notebook
-  - tensorboard
-  - streamlit
+    - specification
+    - api
+    - polyaxon
+    - yaml
+    - json
+    - python
+    - notebook
+    - tensorboard
+    - streamlit
 sidebar: "experimentation"
 ---
 

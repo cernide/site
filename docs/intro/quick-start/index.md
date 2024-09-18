@@ -7,9 +7,9 @@ visibility: public
 status: published
 is_index: true
 tags:
-  - tutorials
-  - concepts
-  - quick-start
+    - tutorials
+    - concepts
+    - quick-start
 sidebar: "intro"
 ---
 
@@ -24,10 +24,11 @@ Otherwise, this section will help you deploy a local Polyaxon cluster with the d
 > **Note**: Minikube is not meant to be a production environment.
 
 Before you can deploy Polyaxon, make sure you have the following:
- * [Minikube](https://kubernetes.io/docs/tasks/tools/install-minikube/) installed and running.
- * [kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/).
- * [Helm](https://helm.sh/docs/intro/install/).
- * [Polyaxon CLI](/docs/setup/cli/).
+
+-   [Minikube](https://kubernetes.io/docs/tasks/tools/install-minikube/) installed and running.
+-   [kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/).
+-   [Helm](https://helm.sh/docs/intro/install/).
+-   [Polyaxon CLI](/docs/setup/cli/).
 
 Add Polyaxon charts repo:
 
@@ -39,9 +40,10 @@ Please note that the default values use the host_path as an artifacts store, if 
 
 ```yaml
 artifactsStore:
-  name: tmp_artifacts_store
-  kind: host_path
-  schema: {"hostPath": "<VALID-MACHINE-PATH>", "mountPath": "/artifactsStore"}
+    name: tmp_artifacts_store
+    kind: host_path
+    schema:
+        { "hostPath": "<VALID-MACHINE-PATH>", "mountPath": "/artifactsStore" }
 ```
 
 For example the path could be `/Users/<USER>/tmp/artifactsStore`.
@@ -66,7 +68,6 @@ polyaxon port-forward -t minikube
 
 > **Tip**: You can learn more about how to customize your Polyaxon Deployment in the [setup section](/docs/setup/).
 
-
 ## Create a new project
 
 You can create a project using [Polyaxon UI](/docs/management/projects/general/) or with [Polyaxon CLI](/docs/core/cli/project/#project-create)
@@ -79,7 +80,7 @@ We will also learn in a future tutorial how to initialize a local folder with a 
 polyaxon project create --name=quick-start --description='Polyaxon quick start examples.' --tags=examples
 ```
 
-This example uses a [public Github repo](https://github.com/polyaxon/polyaxon-quick-start)
+This example uses a [public Github repo](https://github.com/cernide/cernide-quick-start)
 for hosting the project and the Polyaxonfile manifests, similar results can be achieved using a local folder or other platforms, e.g. GitLab, Bitbucket, ...
 
 ## Start an experiment
@@ -93,7 +94,6 @@ polyaxon run --url=https://raw.githubusercontent.com/polyaxon/polyaxon-quick-sta
 > For more details about this command please run `polyaxon run --help`, or check the [command reference](/docs/core/cli/run/)
 
 The `-l` flag indicates that we want to stream the logs after starting the experiment.
-
 
 ## Start a Tensorboard
 
@@ -115,7 +115,6 @@ polyaxon dashboard -y
 
 We can see that Polyaxon has logged some information automatically about our run:
 
-
 ![run-dashboards-many](../../../../content/images/dashboard/runs/dashboards-many.png)
 
 Please check the [runs dashboard](/docs/management/runs-dashboard/) and the
@@ -127,10 +126,10 @@ You've trained your first experiments with Polyaxon, visualized the results in T
 
 Behind the scene a couple of things have happened:
 
- * You synced your GitHub project and used the last commit.
- * You ran a container with a custom image and a custom command to train a model.
- * You persisted your logs and outputs.
- * You visualized the results using Polyaxon's native dashboard and Tensorboard.
+-   You synced your GitHub project and used the last commit.
+-   You ran a container with a custom image and a custom command to train a model.
+-   You persisted your logs and outputs.
+-   You visualized the results using Polyaxon's native dashboard and Tensorboard.
 
 To gain a deeper understanding of what happened and how Polyaxon can help you iterate faster with your experimentation process,
 please check the next section of [this tutorial](/docs/intro/quick-start/components/)

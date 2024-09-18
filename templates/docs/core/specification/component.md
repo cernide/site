@@ -1,18 +1,18 @@
 ---
 title: "Component Specification"
 sub_link: "specification/component"
-code_link: "https://github.com/polyaxon/cli/blob/master/cli/polyaxon/_flow/component/component.py"
+code_link: "https://github.com/cernide/cli/blob/master/cli/polyaxon/_flow/component/component.py"
 meta_title: "Component - Polyaxon Specification"
 meta_description: "A Component is a discrete, repeatable, and self-contained action."
 visibility: public
 status: published
 tags:
-  - specification
-  - api
-  - polyaxon
-  - yaml
-  - json
-  - python
+    - specification
+    - api
+    - polyaxon
+    - yaml
+    - json
+    - python
 sidebar: "core"
 ---
 

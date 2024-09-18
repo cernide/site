@@ -6,18 +6,17 @@ meta_description: "Polyaxon is committed to developing secure, reliable products
 visibility: public
 status: published
 tags:
-  - reference
-  - polyaxon
-  - kubernetes
-  - deep-learning
-  - machine-learning
-  - security
+    - reference
+    - polyaxon
+    - kubernetes
+    - deep-learning
+    - machine-learning
+    - security
 ---
 
 Polyaxon is committed to developing secure, reliable products utilizing all modern security best practices and processes.
 
-We take security very seriously at Polyaxon and welcome any peer review of our [open-source codebase](https://github.com/polyaxon/polyaxon) to help ensure that it remains completely secure.
-
+We take security very seriously at Polyaxon and welcome any peer review of our [open-source codebase](https://github.com/cernide/cernide) to help ensure that it remains completely secure.
 
 ## Security features
 
@@ -53,14 +52,13 @@ Polyaxon uses safe/escaped strings used everywhere.
 
 All dependencies used in Polyaxon are scanned and reviewed carefully.
 
-
 ## Responsible disclosure guidelines
 
 We invite any Polyaxon user to take part in responsible disclosure of any vulnerability.
 
-- Provide details of the vulnerability, including information needed to reproduce and validate the vulnerability and a Proof of Concept
-- Make a good faith effort to avoid privacy violations, destruction and modification of data
-- Give reasonable time to correct the issue before making any information public
+-   Provide details of the vulnerability, including information needed to reproduce and validate the vulnerability and a Proof of Concept
+-   Make a good faith effort to avoid privacy violations, destruction and modification of data
+-   Give reasonable time to correct the issue before making any information public
 
 Security issues always take precedence over bug fixes and feature work. We can and we will make expedite releases/patches mark releases for serious security issues.
 
@@ -68,8 +66,8 @@ Security issues always take precedence over bug fixes and feature work. We can a
 
 We're always interested in hearing about any reproducible vulnerability that affects the security of Polyaxon users, including...
 
-- Cross Site Scripting (XSS)
-- Cross Site Request Forgery (CSRF)
-- Server Side Request Forgery (SSRF)
-- Remote Code Execution (RCE)
-- SQL Injection (SQLi)
+-   Cross Site Scripting (XSS)
+-   Cross Site Request Forgery (CSRF)
+-   Server Side Request Forgery (SSRF)
+-   Remote Code Execution (RCE)
+-   SQL Injection (SQLi)

@@ -7,17 +7,18 @@ date: "2018-10-01"
 meta_title: "How to install Polyaxon on Kubernetes"
 meta_description: "This is a guide to assist you through the process of setting up a Polyaxon deployment using Kubernetes."
 tags:
-  - setup
-  - kubernetes
-  - install
+    - setup
+    - kubernetes
+    - install
 sidebar: "setup"
 ---
 
 If you are here, we assume that you have a Kubernetes cluster and [Helm](https://helm.sh/docs/intro/install/) setup.
 
 This section includes guides to deploy:
- * Polyaxon [Community Edition](/docs/setup/platform/community-edition/).
- * Polyaxon [Enterprise Edition Control Plane](/docs/setup/platform/enterprise-control-plane/).
+
+-   Polyaxon [Community Edition](/docs/setup/platform/community-edition/).
+-   Polyaxon [Enterprise Edition Control Plane](/docs/setup/platform/enterprise-control-plane/).
 
 Both deployments share some [common Helm options](/docs/setup/platform/common-reference/).
 
@@ -27,7 +28,7 @@ Please consider reading the other configuration sections to have a deeper knowle
 
 If you are deploying Polyaxon in production mode, you should take some time to read about some [best practices](/docs/setup/deployment-strategies/best-practices/) when deploying Polyaxon.
 
-> **Tip**: The full list of the default [values.yaml](https://github.com/polyaxon/polyaxon-chart/blob/master/polyaxon/values.yaml)
+> **Tip**: The full list of the default [values.yaml](https://github.com/cernide/cernide-chart/blob/master/polyaxon/values.yaml)
 
 ## Create a namespace for Polyaxon
 
@@ -56,9 +57,9 @@ Example, adding database persistence:
 
 ```yaml
 postgresql:
-  persistence:
-    enabled: true
-    size: 5Gi
+    persistence:
+        enabled: true
+        size: 5Gi
 ```
 
 ## Install Polyaxon
@@ -136,7 +137,7 @@ helm install polyaxon/polyaxon \
 -f config.yaml
 ```
 
->**Note**: "Release name already exists error"
+> **Note**: "Release name already exists error"
 > If you get a release named `<RELEASE_NAME>` already exists error, then you should delete the release by running `helm delete --purge <RELEASE_NAME>`.
 
 You can see the pods being created by entering in a different terminal:
@@ -181,9 +182,9 @@ helm upgrade polyaxon polyaxon/polyaxon -f config.yaml
 
 The general method to modify your Kubernetes deployment is to:
 
- 1. Make a change to the config.yaml
- 2. [Optional] run `polyaxon admin deploy -f config.yaml --check`
- 2. Run a `polyaxon admin upgrade -f config.yaml` or `helm upgrade`:
+1.  Make a change to the config.yaml
+2.  [Optional] run `polyaxon admin deploy -f config.yaml --check`
+3.  Run a `polyaxon admin upgrade -f config.yaml` or `helm upgrade`:
 
     ```bash
     helm upgrade <RELEASE_NAME> polyaxon/polyaxon -f config.yaml
@@ -195,11 +196,11 @@ The general method to modify your Kubernetes deployment is to:
 
     If you used the default values suggested in the docs, the `<RELEASE_NAME>` should be `polyaxon`
 
-  3. Wait for the upgrade to finish, and make sure that when you do
-  `kubectl --namespace=<NAMESPACE> get pod` the pods are in Ready state.
+4.  Wait for the upgrade to finish, and make sure that when you do
+    `kubectl --namespace=<NAMESPACE> get pod` the pods are in Ready state.
+
 
     Your configuration change has been applied!
-
 
 ## Turn off Polyaxon
 
@@ -218,7 +219,6 @@ Or
 
 Polyaxon will by default stop all running jobs/experiments before a teardown,
 unless you prefer not to trigger the pre-delete hooks, in that case you should clean them on your own.
-
 
 ### Delete Helm release
 

@@ -1,18 +1,18 @@
 ---
 title: "Sidecar container setup"
 sub_link: "auxiliaries/init"
-code_link: "https://github.com/polyaxon/cli/blob/master/cli/polyaxon/_auxiliaries/sidecar.py"
+code_link: "https://github.com/cernide/cli/blob/master/cli/polyaxon/_auxiliaries/sidecar.py"
 meta_title: "Polyaxon's Auxiliary Containers - Polyaxon Sidecar"
 meta_description: "Polyaxon sidecar is a helper container that collects outputs, artifacts, and metadata about the main container."
 visibility: public
 status: published
 tags:
-  - agent
-  - specification
-  - yaml
-  - json
-  - kubernetes
-  - install
+    - agent
+    - specification
+    - yaml
+    - json
+    - kubernetes
+    - install
 sidebar: "setup"
 ---
 

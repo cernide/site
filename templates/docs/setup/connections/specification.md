@@ -1,19 +1,19 @@
 ---
 title: "Connection specification"
 sub_link: "connections/specification"
-code_link: "https://github.com/polyaxon/cli/blob/master/cli/polyaxon/_connections/schemas.py"
+code_link: "https://github.com/cernide/cli/blob/master/cli/polyaxon/_connections/schemas.py"
 meta_title: "Connections - Polyaxon Specification"
 meta_description: "Connections are how Polyaxon connects several types of external system and resources to your operations."
 visibility: public
 status: published
 tags:
-  - agent
-  - connections
-  - specification
-  - yaml
-  - json
-  - kubernetes
-  - install
+    - agent
+    - connections
+    - specification
+    - yaml
+    - json
+    - kubernetes
+    - install
 sidebar: "setup"
 ---
 

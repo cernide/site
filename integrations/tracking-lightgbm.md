@@ -5,13 +5,13 @@ meta_description: "Polyaxon allows to schedule LightGBM experiments, and support
 custom_excerpt: "LightGBM, short for Light Gradient Boosting Machine, is a free and open source distributed gradient boosting framework for machine learning originally developed by Microsoft. It is based on decision tree algorithms and used for ranking, classification and other machine learning tasks."
 image: "../../content/images/integrations/lightgbm.png"
 author:
-  name: "Polyaxon"
-  slug: "Polyaxon"
-  website: "https://polyaxon.com"
-  twitter: "polyaxonAI"
-  github: "polyaxon"
+    name: "Polyaxon"
+    slug: "Polyaxon"
+    website: "https://polyaxon.com"
+    twitter: "polyaxonAI"
+    github: "polyaxon"
 tags:
-  - tracking
+    - tracking
 featured: false
 popularity: 2
 visibility: public
@@ -22,14 +22,14 @@ Polyaxon allows to schedule LightGBM experiments and supports tracking metrics, 
 
 With Polyaxon you can:
 
- * log hyperparameters for every run
- * see learning curves for losses and metrics during training
- * see hardware consumption and stdout/stderr output during training
- * log images, charts, and other assets
- * log git commit information
- * log env information
- * log model
- * ...
+-   log hyperparameters for every run
+-   see learning curves for losses and metrics during training
+-   see hardware consumption and stdout/stderr output during training
+-   log images, charts, and other assets
+-   log git commit information
+-   log env information
+-   log model
+-   ...
 
 ## Tracking API
 
@@ -92,14 +92,14 @@ gbm = lgb.train(
 
 If you want to have more control and use Polyaxon to log metrics in your scripts, you just need to add `tracking.log_...` anywhere needed:
 
- * log metrics
+-   log metrics
 
 ```python
 tracking.log_mtrics(loss=loss)
 ```
 
- * log artifacts
- 
+-   log artifacts
+
 ```python
 tracking.log_artifact_ref(asset_path)
 ```
@@ -108,9 +108,9 @@ tracking.log_artifact_ref(asset_path)
 
 In this example we will go through the process of logging a LightGBM model using Polyaxon's callback.
 
-This example can be used with the offline mode `POLYAXON_OFFLINE=true` and it does not require a Polyaxon API to run locally. 
+This example can be used with the offline mode `POLYAXON_OFFLINE=true` and it does not require a Polyaxon API to run locally.
 
-To see how this can be turned to a declarative approach to be submitted to a Polyaxon cluster, please check this [example](https://github.com/polyaxon/polyaxon-examples/tree/master/in_cluster/lightgbm/wine)
+To see how this can be turned to a declarative approach to be submitted to a Polyaxon cluster, please check this [example](https://github.com/cernide/cernide-examples/tree/master/in_cluster/lightgbm/wine)
 
 ```python
 import argparse
@@ -206,4 +206,3 @@ if __name__ == '__main__':
     # Polyaxon
     tracking.log_model_ref(model_path, framework="lightgbm")
 ```
-

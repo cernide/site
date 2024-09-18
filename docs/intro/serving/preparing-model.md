@@ -6,10 +6,10 @@ meta_description: "Preparing the model - Become familiar with the ecosystem of P
 visibility: public
 status: published
 tags:
-  - tutorials
-  - concepts
-  - notebook
-  - quick-start
+    - tutorials
+    - concepts
+    - notebook
+    - quick-start
 sidebar: "intro"
 ---
 
@@ -17,10 +17,10 @@ sidebar: "intro"
 
 In this section, we will learn how to train a machine learning model and deploy it as:
 
- * An interactive dashboard with streamlit.
- * An REST API with Flask.
- * An REST API with FastAPI.
- * A Batch Scoring Job.
+-   An interactive dashboard with streamlit.
+-   An REST API with Flask.
+-   An REST API with FastAPI.
+-   A Batch Scoring Job.
 
 In order to create the various serving services and batch scoring jobs, we will need first to create and log a model.
 
@@ -29,7 +29,7 @@ In order to create the various serving services and batch scoring jobs, we will 
 Clone the ml-serving example repo:
 
 ```bash
-git clone https://github.com/polyaxon/polyaxon-ml-serving.git
+git clone https://github.com/cernide/cernide-ml-serving.git
 ```
 
 Then cd into the new folder:
@@ -172,7 +172,7 @@ Now we have a script that accepts parameters to evaluate the model based on diff
 ### Running experiments with Polyaxon
 
 Instead of running the model by manually changing the values in the notebook, we will create a script and run the model using Polyaxon. We will also log the resulting metrics and model using [Polyaxon's tracking module](https://polyaxon.com/docs/experimentation/tracking/).
-The code for the model that we will train can be found in this [github repo](https://github.com/polyaxon/polyaxon-ml-serving).
+The code for the model that we will train can be found in this [github repo](https://github.com/cernide/cernide-ml-serving).
 
 Running the example with the default parameters:
 
@@ -226,7 +226,8 @@ tracking.log_model(model_path, name="iris-model", framework="scikit-learn", vers
 > **Note**: the `versioned` was removed in version `>v1.17` and is the default behavior.
 
 In the following guides, we will deploy:
- * A simple streamlit app that loads the model and displays an app that makes a prediction based on the features and displays an image corresponding to the flower class.
- * A REST API using Flask that loads the model, expects data, and returns predictions.
- * A REST API using FastAPI that loads the model, expects data, and returns predictions.
- * A scoring batch job that loads the model, expects data, and make predictions.
+
+-   A simple streamlit app that loads the model and displays an app that makes a prediction based on the features and displays an image corresponding to the flower class.
+-   A REST API using Flask that loads the model, expects data, and returns predictions.
+-   A REST API using FastAPI that loads the model, expects data, and returns predictions.
+-   A scoring batch job that loads the model, expects data, and make predictions.

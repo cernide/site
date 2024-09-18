@@ -1,17 +1,17 @@
 ---
 title: "Joins specification"
 sub_link: "joins/specification"
-code_link: "https://github.com/polyaxon/cli/blob/master/cli/polyaxon/_flow/joins/__init__.py"
+code_link: "https://github.com/cernide/cli/blob/master/cli/polyaxon/_flow/joins/__init__.py"
 meta_title: "Joins for aggregating results from upstream runs - Polyaxon automation"
 meta_description: "Joins for running a component based on the results of upstream or parallel runs and aggregating dynamically inputs, outputs, adn artifacts dynamically."
 visibility: public
 status: published
 tags:
-  - reference
-  - polyaxon
-  - polyflow
-  - pipelines
-  - joins
+    - reference
+    - polyaxon
+    - polyflow
+    - pipelines
+    - joins
 sidebar: "automation"
 ---
 

@@ -6,10 +6,10 @@ meta_description: "Serving REST APIs with FastAPI - Become familiar with the eco
 visibility: public
 status: published
 tags:
-  - tutorials
-  - concepts
-  - notebook
-  - quick-start
+    - tutorials
+    - concepts
+    - notebook
+    - quick-start
 sidebar: "intro"
 ---
 
@@ -21,7 +21,7 @@ before moving to a platform that specializes in serving or inference.
 
 The same principles in this guides can be used to deploy similar REST APIs using any other framework of your choice.
 
-All code and manifests used in this tutorial can be found in this [github repo](https://github.com/polyaxon/polyaxon-ml-serving).
+All code and manifests used in this tutorial can be found in this [github repo](https://github.com/cernide/cernide-ml-serving).
 
 > **Note**: On Polyaxon EE or Polyaxon Cloud, the REST APIs will be protected and can only be accessed by users who have access to your organization following the permissions defined for each member.
 
@@ -40,7 +40,6 @@ tracking.log_model(model_path, name="iris-model", framework="scikit-learn", vers
 
 We will deploy a simple FastAPI service that will load the best model based on accuracy as an Iris classification RESt API.
 Our service will expose two API endpoints, one for returning predictions and one for returning probabilities.
-
 
 ```python
 from typing import Dict
@@ -122,21 +121,30 @@ name: fastapi-iris-classification
 tags: ["fastapi", "api"]
 
 inputs:
-- name: uuid
-  type: str
+    - name: uuid
+      type: str
 
 run:
-  kind: service
-  ports: [8000]
-  rewritePath: true
-  init:
-  - git: {"url": "https://github.com/polyaxon/polyaxon-ml-serving"}
-  - artifacts: {"files": [["{{ uuid }}/outputs/model/model.joblib", "{{ globals.artifacts_path }}/polyaxon-ml-serving/fastapi-serving/model.joblib"]]}
-  container:
-    image: polyaxon/polyaxon-examples:ml-serving
-    workingDir: "{{ globals.artifacts_path }}/polyaxon-ml-serving/fastapi-serving"
-    command: ["sh", "-c"]
-    args: ["uvicorn app:app --host 0.0.0.0 --port 8000"]
+    kind: service
+    ports: [8000]
+    rewritePath: true
+    init:
+        - git: { "url": "https://github.com/cernide/cernide-ml-serving" }
+        - artifacts:
+              {
+                  "files":
+                      [
+                          [
+                              "{{ uuid }}/outputs/model/model.joblib",
+                              "{{ globals.artifacts_path }}/polyaxon-ml-serving/fastapi-serving/model.joblib",
+                          ],
+                      ],
+              }
+    container:
+        image: polyaxon/polyaxon-examples:ml-serving
+        workingDir: "{{ globals.artifacts_path }}/polyaxon-ml-serving/fastapi-serving"
+        command: ["sh", "-c"]
+        args: ["uvicorn app:app --host 0.0.0.0 --port 8000"]
 ```
 
 ## Scheduling the service

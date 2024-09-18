@@ -6,10 +6,10 @@ meta_description: "Programmatic Iteration with the python client - Become famili
 visibility: public
 status: published
 tags:
-  - tutorials
-  - concepts
-  - client
-  - quick-start
+    - tutorials
+    - concepts
+    - client
+    - quick-start
 sidebar: "intro"
 ---
 
@@ -31,37 +31,42 @@ description: experiment with inputs
 tags: [examples]
 
 inputs:
-- {name: conv1_size, type: int, value: 32, isOptional: true}
-- {name: conv2_size, type: int, value: 64, isOptional: true}
-- {name: dropout, type: float, value: 0.2, isOptional: true}
-- {name: hidden1_size, type: int, value: 500, isOptional: true}
-- {name: conv_activation, type: str, value: relu, isOptional: true}
-- {name: dense_activation, type: str, value: relu, isOptional: true}
-- {name: optimizer, type: str, value: adam, isOptional: true}
-- {name: learning_rate, type: float, value: 0.01, isOptional: true}
-- {name: epochs, type: int}
+    - { name: conv1_size, type: int, value: 32, isOptional: true }
+    - { name: conv2_size, type: int, value: 64, isOptional: true }
+    - { name: dropout, type: float, value: 0.2, isOptional: true }
+    - { name: hidden1_size, type: int, value: 500, isOptional: true }
+    - { name: conv_activation, type: str, value: relu, isOptional: true }
+    - { name: dense_activation, type: str, value: relu, isOptional: true }
+    - { name: optimizer, type: str, value: adam, isOptional: true }
+    - { name: learning_rate, type: float, value: 0.01, isOptional: true }
+    - { name: epochs, type: int }
 outputs:
-- {name: loss, type: float}
-- {name: accuracy, type: float}
+    - { name: loss, type: float }
+    - { name: accuracy, type: float }
 
 run:
-  kind: job
-  init:
-  - git: {url: "https://github.com/polyaxon/polyaxon-quick-start"}
-  container:
-    image: polyaxon/polyaxon-quick-start
-    command: [python3, "{{ globals.artifacts_path }} + /polyaxon-quick-start/model.py"]
-    args: [
-      "--conv1_size={{ conv1_size }}",
-      "--conv2_size={{ conv2_size }}",
-      "--dropout={{ dropout }}",
-      "--hidden1_size={{ hidden1_size }}",
-      "--optimizer={{ optimizer }}",
-      "--conv_activation={{ conv_activation }}",
-      "--dense_activation={{ dense_activation }}",
-      "--learning_rate={{ learning_rate }}",
-      "--epochs={{ epochs }}"
-    ]
+    kind: job
+    init:
+        - git: { url: "https://github.com/cernide/cernide-quick-start" }
+    container:
+        image: polyaxon/polyaxon-quick-start
+        command:
+            [
+                python3,
+                "{{ globals.artifacts_path }} + /polyaxon-quick-start/model.py",
+            ]
+        args:
+            [
+                "--conv1_size={{ conv1_size }}",
+                "--conv2_size={{ conv2_size }}",
+                "--dropout={{ dropout }}",
+                "--hidden1_size={{ hidden1_size }}",
+                "--optimizer={{ optimizer }}",
+                "--conv_activation={{ conv_activation }}",
+                "--dense_activation={{ dense_activation }}",
+                "--learning_rate={{ learning_rate }}",
+                "--epochs={{ epochs }}",
+            ]
 ```
 
 This component does not use all sections that Polyaxon exposes, but similar logic should be used to include additional sections.
@@ -90,7 +95,7 @@ outputs = [
 ]
 
 job = V1Job(
-    init=[V1Init(git=V1GitType(url="https://github.com/polyaxon/polyaxon-quick-start"))],
+    init=[V1Init(git=V1GitType(url="https://github.com/cernide/cernide-quick-start"))],
     container=V1Container(
         image="polyaxon/polyaxon-quick-start",
         working_dir="{{ globals.artifacts_path }}",
@@ -263,4 +268,3 @@ polyaxon run -pm path/to/typed_experiment.py:component1 -P ...
 # component2
 polyaxon run -pm path/to/typed_experiment.py:component2 -P ...
 ```
-

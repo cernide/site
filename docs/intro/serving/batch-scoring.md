@@ -6,10 +6,10 @@ meta_description: "Batch scoring - Become familiar with the ecosystem of Polyaxo
 visibility: public
 status: published
 tags:
-  - tutorials
-  - concepts
-  - notebook
-  - quick-start
+    - tutorials
+    - concepts
+    - notebook
+    - quick-start
 sidebar: "intro"
 ---
 
@@ -19,7 +19,7 @@ In the previous guide we trained several models. In this section we will demonst
 This type of jobs can be used for batch inference or data processing workloads,
 it can be used also for running ML models using a variety of frameworks such as: PyTorch, ONNX, scikit-learn, XGBoost, TensorFlow (if not using SavedModels), etc.
 
-All code and manifests used in this tutorial can be found in this [github repo](https://github.com/polyaxon/polyaxon-ml-serving).
+All code and manifests used in this tutorial can be found in this [github repo](https://github.com/cernide/cernide-ml-serving).
 
 ## Logged model
 
@@ -37,7 +37,6 @@ tracking.log_model(model_path, name="iris-model", framework="scikit-learn", vers
 We will deploy a simple job that will load the best model based on accuracy as and run a scoring logic on a dataset loaded from a CSV file.
 In order to make this example simple and runnable, we decided to host the CSV file directly on the repo, however the provenance of the dataset can be an S3/GCS bucket, a URL, or mounted path.
 The job itself expects a csv filepath and a model path, which can be exposed on the job component as well.
-
 
 ```python
 import argparse
@@ -109,18 +108,27 @@ name: batch-scoring
 tags: ["scoring", "job"]
 
 inputs:
-- name: uuid
-  type: str
+    - name: uuid
+      type: str
 
 run:
-  kind: job
-  init:
-  - git: {"url": "https://github.com/polyaxon/polyaxon-ml-serving"}
-  - artifacts: {"files": [["{{ uuid }}/outputs/model/model.joblib", "{{ globals.artifacts_path }}/polyaxon-ml-serving/batch-scoring/model.joblib"]]}
-  container:
-    image: polyaxon/polyaxon-examples:ml-serving
-    workingDir: "{{ globals.artifacts_path }}/polyaxon-ml-serving/batch-scoring"
-    command: ["python", "-u", "scoring_job.py"]
+    kind: job
+    init:
+        - git: { "url": "https://github.com/cernide/cernide-ml-serving" }
+        - artifacts:
+              {
+                  "files":
+                      [
+                          [
+                              "{{ uuid }}/outputs/model/model.joblib",
+                              "{{ globals.artifacts_path }}/polyaxon-ml-serving/batch-scoring/model.joblib",
+                          ],
+                      ],
+              }
+    container:
+        image: polyaxon/polyaxon-examples:ml-serving
+        workingDir: "{{ globals.artifacts_path }}/polyaxon-ml-serving/batch-scoring"
+        command: ["python", "-u", "scoring_job.py"]
 ```
 
 To schedule the job with Polyaxon:
@@ -150,8 +158,8 @@ version: 1.1
 kind: operation
 name: scoring-every-monday
 schedule:
-  kind: cron
-  cron: "0 0 * * MON"
+    kind: cron
+    cron: "0 0 * * MON"
 pathRef: ./polyaxonfile.yaml
 ```
 
@@ -162,9 +170,9 @@ version: 1.1
 kind: operation
 name: scoring-every-60-minute
 schedule:
-  kind: interval
-  frequency: 3600
-  dependsOnPast: true
+    kind: interval
+    frequency: 3600
+    dependsOnPast: true
 pathRef: ./polyaxonfile.yaml
 ```
 

@@ -1,21 +1,21 @@
 ---
 title: "MXNet-Job Specification"
 sub_link: "distributed/mxnet-jobs"
-code_link: "https://github.com/polyaxon/cli/blob/master/cli/polyaxon/_flow/run/kubeflow/mx_job.py"
+code_link: "https://github.com/cernide/cli/blob/master/cli/polyaxon/_flow/run/kubeflow/mx_job.py"
 meta_title: "Kubeflow MXNet-Job Specification - Experimentation"
 meta_description: "Kubeflow MXNet-Job provides an interface to train distributed experiments with MXNet."
 visibility: public
 status: published
 tags:
-  - specification
-  - api
-  - polyaxon
-  - yaml
-  - json
-  - python
-  - mxnet
-  - experimentation
-  - experiments
+    - specification
+    - api
+    - polyaxon
+    - yaml
+    - json
+    - python
+    - mxnet
+    - experimentation
+    - experiments
 sidebar: "experimentation"
 ---
 

@@ -1,18 +1,18 @@
 ---
 title: "Notifier job setup"
 sub_link: "auxiliaries/notifier"
-code_link: "https://github.com/polyaxon/cli/blob/master/cli/polyaxon/_auxiliaries/notifier.py"
+code_link: "https://github.com/cernide/cli/blob/master/cli/polyaxon/_auxiliaries/notifier.py"
 meta_title: "Polyaxon's Auxiliary Containers - Polyaxon Notifier"
 meta_description: "Polyaxon notifier is a helper job that gets scheduled to handle post-done events and send webhooks for operations annotated with `hooks` or `notifications`."
 visibility: public
 status: published
 tags:
-  - agent
-  - specification
-  - yaml
-  - json
-  - kubernetes
-  - install
+    - agent
+    - specification
+    - yaml
+    - json
+    - kubernetes
+    - install
 sidebar: "setup"
 ---
 

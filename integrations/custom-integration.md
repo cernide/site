@@ -5,13 +5,13 @@ meta_description: "How to create custom API and webhook based integrations to cr
 custom_excerpt: "Polyaxon is completely open-source and can be integrated with just about any other app or service."
 image: "../../content/images/integrations/custom.png"
 author:
-  name: "Polyaxon"
-  slug: "Polyaxon"
-  website: "https://polyaxon.com"
-  twitter: "polyaxonAI"
-  github: "polyaxon"
+    name: "Polyaxon"
+    slug: "Polyaxon"
+    website: "https://polyaxon.com"
+    twitter: "polyaxonAI"
+    github: "polyaxon"
 tags:
-  - custom
+    - custom
 featured: false
 popularity: 1
 visibility: public
@@ -25,7 +25,7 @@ Polyaxon core engine is open-source, has a Json API, webhooks, and an abstractio
 Polyaxon provides an interface for authoring reusable [components](/docs/core/specification/),
 there's a growing ecosystem of components that can be used by other Polyaxon users, but it's a big world out there.
 There are always useful integrations that don't yet exist, but should.
-Users can contribute new components to the public [components registry](https://github.com/polyaxon/polyaxon-hub/)
+Users can contribute new components to the public [components registry](https://github.com/cernide/cernide-hub/)
 or create private components for their own internal use.
 
 ## Integrations with the API/SDKs

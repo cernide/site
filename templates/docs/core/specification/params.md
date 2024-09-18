@@ -1,18 +1,18 @@
 ---
 title: "Params Specification"
 sub_link: "specification/params"
-code_link: "https://github.com/polyaxon/cli/blob/master/cli/polyaxon/_flow/params/params.py"
+code_link: "https://github.com/cernide/cli/blob/master/cli/polyaxon/_flow/params/params.py"
 meta_title: "Params - Polyaxon Specification"
 meta_description: "Params can provide values to inputs/outputs."
 visibility: public
 status: published
 tags:
-  - specification
-  - api
-  - polyaxon
-  - yaml
-  - json
-  - python
+    - specification
+    - api
+    - polyaxon
+    - yaml
+    - json
+    - python
 sidebar: "core"
 ---
 
